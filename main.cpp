@@ -49,7 +49,6 @@ void evolveGA(std::vector<std::pair<std::string, int>>& population, int& goal_ti
         int current_size = population.size();
         population = std::vector<std::pair<std::string, int>>(population.begin(), population.end()-(PERCENT_TO_DIE_OFF*current_size));
         int to_populate = current_size - population.size();
-      //  std::cout << "To populate: " << to_populate << std::endl;
         current_size = population.size();
         while (to_populate > 0)
         {
@@ -70,11 +69,12 @@ void evolveGA(std::vector<std::pair<std::string, int>>& population, int& goal_ti
         }
 
         // mutate
+        int random_selection1, random_selection2; char random_selection3;
         for (int i= 0; i < population.size()*MUTATION_RATE; i++)
         {
-            int random_selection1 = (population.size()-1)*((float)rand()/RAND_MAX);
-            int random_selection2 = std::min(15, (int)(16.0*((float)rand()/RAND_MAX)));
-            char random_selection3 = std::min(9, (int)(10.0*((float)rand()/RAND_MAX))) + '0';
+            random_selection1 = (population.size()-1)*((float)rand()/RAND_MAX);
+            random_selection2 = std::min(15, (int)(16.0*((float)rand()/RAND_MAX)));
+            random_selection3 = std::min(9, (int)(10.0*((float)rand()/RAND_MAX))) + '0';
             population[random_selection1].first[random_selection2] = random_selection3;
 
         }
@@ -105,10 +105,7 @@ int main() {
     int avg = 0;
     for (int i= 0; i < 5000; i++)
     {
-       // int s = score(actual, 0);
-        //std::cout << -s << std::endl;
-        avg += -score(actual, 0);
-
+        avg += -score(actual, 0);\
     }
     int goal_time = avg/5000;
     std::cout << "Goal time: " << goal_time << std::endl;
@@ -132,3 +129,4 @@ int main() {
     srand((unsigned)time(NULL));
     return 0;
 }
+
