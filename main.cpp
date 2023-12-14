@@ -105,7 +105,7 @@ int main() {
     int avg = 0;
     for (int i= 0; i < 5000; i++)
     {
-        avg += -score(actual, 0);\
+        avg += -score(actual, 0);
     }
     int goal_time = avg/5000;
     std::cout << "Goal time: " << goal_time << std::endl;
