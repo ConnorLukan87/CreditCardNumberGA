@@ -112,6 +112,7 @@ int main() {
 
 
     auto population = make_random_population(100);
+    srand((unsigned)time(NULL));
     evolveGA(population, goal_time);
 
     for (int i = 0; i < population.size(); i++)
@@ -126,7 +127,7 @@ int main() {
         std::cout << population[i].first << " Score: " << population[i].second << std::endl;
     }
 
-    srand((unsigned)time(NULL));
+
     return 0;
 }
 
